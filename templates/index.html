@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ぺこMap</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="container">
+    <h1>ぺこMap</h1>
+
+    <form method="POST" action="{{ url_for('index') }}">
+        <div id="area-select">
+            <label>エリアを選んでね：</label>
+            <select name="area" id="area">
+                {% for area in areas %}
+                <option value="{{ area }}">{{ area }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn">診断スタート！</button>
+        </div>
+    </form>
+
+    <div id="quiz-container" style="display:none;"></div>
+
+    <div id="result-container" style="display:none;">
+    <h2 id="result-title"></h2>
+    <p id="result-text"></p>
+    <a id="map-link" href="#" target="_blank" rel="noopener noreferrer">Googleマップで探す</a>
+    <button id="reset-button">もう一度診断する</button> <!-- ← 追加ここ！ -->
+</div>
+
+    </div>
+
+
+</body>
+</html>

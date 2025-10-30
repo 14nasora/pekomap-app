@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>診断中 - ぺこMap</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>質問 {{ step + 1 }} / {{ total_steps }}</h1>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ (step + 1) * 100 // total_steps }}%"></div>
+        </div>
+        <h2>{{ question.question }}</h2>
+        <form method="POST" class="quiz-form">
+            <button type="submit" name="answer" value="{{ question.yesType }}" class="btn btn-yes">はい</button>
+            <button type="submit" name="answer" value="{{ question.noType }}" class="btn btn-no">いいえ</button>
+        </form>
+        {% if step > 0 %}
+        <form method="GET" action="{{ url_for('quiz', step=step-1) }}">
+            <input type="hidden" name="area" value="{{ area }}">
+            <input type="hidden" name="answers" value="{{ answers.rsplit(',',1)[0] if ',' in answers else '' }}">
+            <button type="submit" class="back-btn">← 戻る</button>
+        </form>
+        {% else %}
+        <a href="{{ url_for('index') }}" class="back-btn">← ホームに戻る</a>
+        {% endif %}
+    </div>
+</body>
+</html>

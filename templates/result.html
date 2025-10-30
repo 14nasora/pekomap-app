@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>診断結果 - ぺこMap</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h2>あなたは「{{ category }}タイプ」！</h2>
+        <p>おすすめジャンルは「{{ category }}」です</p>
+        <a href="{{ map_url }}" target="_blank" rel="noopener noreferrer">{{ area }}で{{ category }}を探す</a>
+        <a href="{{ url_for('index') }}"><button>もう一度診断する</button></a>
+    </div>
+</body>
+</html>
