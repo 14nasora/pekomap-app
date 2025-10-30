@@ -12,24 +12,35 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 
 def get_result_type(answers: str) -> str:
-    """回答から結果のタイプを決定する"""
+    """回答から結果のタイプを決定する（重み付け対応）"""
     try:
         answers_list = answers.split(",") if answers else []
         
-        # 特別なケース: 肉タイプが含まれていれば必ず肉を選択
-        if "niku" in answers_list:
-            return "niku"
-        
-        # 通常の集計処理
-        counts: Dict[str, int] = {}
-        for answer_type in answers_list:
-            if answer_type in TYPE_TO_CATEGORY:
-                counts[answer_type] = counts.get(answer_type, 0) + 1
-        
-        if not counts:
+        if not answers_list:
             return "healing"  # デフォルトタイプ
-            
-        return max(counts, key=counts.get)
+        
+        # 重み付きスコア計算
+        scores: Dict[str, float] = {}
+        
+        for idx, answer_type in enumerate(answers_list):
+            if answer_type in TYPE_TO_CATEGORY and idx < len(QUESTIONS):
+                weight = QUESTIONS[idx].get("weight", 1)
+                scores[answer_type] = scores.get(answer_type, 0) + weight
+        
+        if not scores:
+            return "healing"
+        
+        # 最高スコアのタイプを取得
+        result_type = max(scores, key=scores.get)
+        
+        # 特別ルール：肉タイプが高スコアまたは2回以上選ばれていれば優先
+        if "niku" in scores:
+            niku_count = answers_list.count("niku")
+            if niku_count >= 2 or scores["niku"] >= max(scores.values()) * 0.8:
+                return "niku"
+        
+        return result_type
+        
     except Exception as e:
         logger.error(f"結果タイプの決定中にエラーが発生: {e}")
         return "healing"  # エラー時はデフォルトタイプを返す
