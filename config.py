@@ -1,14 +1,16 @@
-from typing import Dict, List
+from typing import Dict, List, Any
 
-# 質問データ
-QUESTIONS: List[Dict[str, str]] = [
-    {"question": "カフェでまったりしたい？", "yesType": "healing", "noType": "power"},
-    {"question": "スタミナ満点のご飯で元気出したい？", "yesType": "volume", "noType": "healing"},
-    {"question": "スイーツで幸せチャージしたい？", "yesType": "sweet", "noType": "volume"},
-    {"question": "静かな空間で落ち着きたい？", "yesType": "healing", "noType": "volume"},
-    {"question": "お肉でテンション上げたい？", "yesType": "niku", "noType": "power"},
-    {"question": "ピリッと辛さでリフレッシュしたい？", "yesType": "spicy", "noType": "sweet"},
-    {"question": "さっぱりしたものが食べたい？", "yesType": "sappari", "noType": "volume"}
+# 質問データ（重みつきで精度向上）
+QUESTIONS: List[Dict[str, Any]] = [
+    {"question": "今日は「お肉」をガッツリ食べたい気分？", "yesType": "niku", "noType": "power", "weight": 3},
+    {"question": "甘いスイーツで癒されたい？", "yesType": "sweet", "noType": "sappari", "weight": 2},
+    {"question": "辛くて刺激的なものが食べたい？", "yesType": "spicy", "noType": "healing", "weight": 2},
+    {"question": "おしゃれなカフェでゆったり過ごしたい？", "yesType": "healing", "noType": "volume", "weight": 2},
+    {"question": "ボリューム満点のラーメンでお腹いっぱいにしたい？", "yesType": "volume", "noType": "sappari", "weight": 2},
+    {"question": "あっさり・さっぱりしたものが食べたい？", "yesType": "sappari", "noType": "volume", "weight": 2},
+    {"question": "中華料理でスタミナをつけたい？", "yesType": "power", "noType": "healing", "weight": 2},
+    {"question": "落ち着いた雰囲気の静かな場所が良い？", "yesType": "healing", "noType": "niku", "weight": 1},
+    {"question": "しっかり食べて満足感を得たい？", "yesType": "volume", "noType": "sweet", "weight": 1}
 ]
 
 # タイプ対応ジャンル
