@@ -37,6 +37,23 @@ body {
     margin: 30px 0;
 }
 
+/* --- エリア選択周りの横並び調整 --- */
+#area-select {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+select#area {
+    padding: 10px 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
 .btn {
     padding: 15px 40px;
     font-size: 1.2rem;
@@ -118,6 +135,23 @@ button:hover {
 
 .back-btn:hover {
     background-color: #aaa;
+}
+
+/* 小型のインラインボタン（現在地など） */
+.btn.btn-inline,
+.btn-inline {
+    padding: 10px 16px;
+    font-size: 1rem;
+    min-width: auto;
+    width: auto;
+    border-radius: 10px;
+}
+
+/* 他の button ルールに上書きされる場合があるため、より強い指定で上書きする */
+.btn-inline {
+    width: auto !important;
+    display: inline-block !important;
+    vertical-align: middle;
 }
 
 /* --- Googleマップリンク --- */
