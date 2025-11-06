@@ -58,14 +58,14 @@ select.btn-select {
     font-size: 1rem;
     border-radius: 12px;
     border: none;
-    /* 背景をさらに薄くしてより自然に馴染ませる（ほのかな塗り） */
-    background: linear-gradient(180deg, #fffefd 0%, #fffbf6 100%);
-    color: black; /* 県選択の文字を黒にする */
+        /* 淡い暖色系（ペールオレンジ / ピーチ）に変更 */
+        background: linear-gradient(180deg, #fff6f0 0%, #ffe9d8 100%);
+    color: #2b2b2b; /* 文字を濃い色にして可読性を確保 */
     min-width: 160px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 3px rgba(0,0,0,0.04);
-    border: 1px solid rgba(0,0,0,0.035);
-    /* 矢印はより薄めの黒で控えめに表示 */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%230b0b0b' fill-opacity='0.6' d='M0 0l5 6 5-6z'/></svg>");
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 3px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.04);
+    /* 矢印アイコンは濃いめにして視認性を確保 */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%230b0b0b' fill-opacity='0.85' d='M0 0l5 6 5-6z'/></svg>");
     background-repeat: no-repeat;
     background-position: right 12px center;
     cursor: pointer;
@@ -74,7 +74,7 @@ select.btn-select {
 /* ドロップダウン内の option の文字色を黒にする（ブラウザによっては限定的に適用されます） */
 select#area option,
 select.btn-select option {
-    color: black;
+    color: #2b2b2b;
 }
 
 select#area:focus,
@@ -98,6 +98,8 @@ select.btn-select:focus {
     position: relative;
     touch-action: manipulation; /* タップの反応を最適化 */
 }
+
+/*（.btn が select に影響する問題はテンプレート側でクラスを整理して対応しました）*/
 
 .btn:hover {
     transform: translateY(-3px);

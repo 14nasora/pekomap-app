@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>ぺこMap</title>
     <!-- バージョン付与でキャッシュ強制更新しやすくする -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=3" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=4" />
 </head>
 <body>
     <div class="container">
@@ -15,7 +15,7 @@
     <form method="POST" action="{{ url_for('index') }}">
         <div id="area-select">
             <label>エリアを選んでね：</label>
-            <select name="area" id="area" class="btn btn-select">
+            <select name="area" id="area" class="btn-select">
                 {% for area in areas %}
                 <option value="{{ area }}">{{ area }}</option>
                 {% endfor %}
