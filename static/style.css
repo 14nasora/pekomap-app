@@ -58,12 +58,14 @@ select.btn-select {
     font-size: 1rem;
     border-radius: 12px;
     border: none;
-    background: linear-gradient(135deg, #b31010 0%, #c41a1a 100%);
+    /* 背景をさらに薄くしてより自然に馴染ませる（ほのかな塗り） */
+    background: linear-gradient(180deg, #fffefd 0%, #fffbf6 100%);
     color: black; /* 県選択の文字を黒にする */
     min-width: 160px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    /* 矢印アイコンも文字色に合わせて黒に変更 */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='black' d='M0 0l5 6 5-6z'/></svg>");
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 3px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.035);
+    /* 矢印はより薄めの黒で控えめに表示 */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%230b0b0b' fill-opacity='0.6' d='M0 0l5 6 5-6z'/></svg>");
     background-repeat: no-repeat;
     background-position: right 12px center;
     cursor: pointer;
