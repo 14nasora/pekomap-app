@@ -48,12 +48,36 @@ body {
     margin-bottom: 20px;
 }
 
-select#area {
-    padding: 10px 12px;
+/* 選択（セレクト）をボタン風に見せる */
+select#area,
+select.btn-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 12px 40px 12px 14px; /* 右側に矢印分の余白を確保 */
     font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    background: white;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #b31010 0%, #c41a1a 100%);
+    color: black; /* 県選択の文字を黒にする */
+    min-width: 160px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    /* 矢印アイコンも文字色に合わせて黒に変更 */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='black' d='M0 0l5 6 5-6z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    cursor: pointer;
+}
+
+/* ドロップダウン内の option の文字色を黒にする（ブラウザによっては限定的に適用されます） */
+select#area option,
+select.btn-select option {
+    color: black;
+}
+
+select#area:focus,
+select.btn-select:focus {
+    outline: 3px solid rgba(179,16,16,0.15);
 }
 
 .btn {
@@ -65,7 +89,7 @@ select#area {
     cursor: pointer;
     transition: all 0.2s ease;
     background-color: #b31010;
-    color: white;
+    color: rgb(255, 255, 255);
     min-width: 160px;
     width: auto; /* デスクトップでは横幅を自動にして並列表示を維持 */
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -189,6 +213,17 @@ button:hover {
     width: auto !important;
     display: inline-block !important;
     vertical-align: middle;
+}
+
+/* 現在地ボタンの専用スタイル（背景をクリーム色にする） */
+#current-btn {
+    background-color: #fff8e1; /* クリーム色 */
+    color: #2b2b2b; /* 文字は濃いグレーで可読性を確保 */
+    border-color: #ecd9a8;
+}
+
+#current-btn:hover {
+    background-color: #fff1c9; /* hover時に少し濃くする */
 }
 
 /* --- Googleマップリンク --- */

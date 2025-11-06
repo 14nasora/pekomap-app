@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>ぺこMap</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <!-- バージョン付与でキャッシュ強制更新しやすくする -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=3" />
 </head>
 <body>
     <div class="container">
@@ -14,13 +15,11 @@
     <form method="POST" action="{{ url_for('index') }}">
         <div id="area-select">
             <label>エリアを選んでね：</label>
-            <select name="area" id="area">
+            <select name="area" id="area" class="btn btn-select">
                 {% for area in areas %}
                 <option value="{{ area }}">{{ area }}</option>
                 {% endfor %}
             </select>
-            <!-- 現在地ボタン：フォーム送信時に area=現在地 を送る（JS不要） -->
-            <button type="submit" id="current-btn" name="area" value="現在地" class="btn btn-inline">現在地</button>
             <!-- 診断スタートボタンにIDを付与（script.js と整合を取りやすく） -->
             <button type="submit" class="btn" id="start-button">診断スタート！</button>
         </div>

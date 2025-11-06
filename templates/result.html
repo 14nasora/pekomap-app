@@ -10,8 +10,9 @@
     <div class="container">
         <h2>あなたは「{{ category }}タイプ」！</h2>
         <p>おすすめジャンルは「{{ category }}」です</p>
-        <a href="{{ map_url }}" target="_blank" rel="noopener noreferrer">{{ area }}で{{ category }}を探す</a>
-        <a href="{{ url_for('index') }}"><button>もう一度診断する</button></a>
+    <a href="{{ map_url }}" target="_blank" rel="noopener noreferrer" class="map-link">{{ area }}で{{ category }}を探す</a>
+    <!-- 他ページのメインボタンと見た目を揃える -->
+    <a href="{{ url_for('index') }}" class="btn" id="retry-button">もう一度診断する</a>
     </div>
 </body>
 </html>
