@@ -193,10 +193,10 @@ button:hover {
 }
 
 /* --- 戻るボタン --- */
-.back-btn {
-    background-color: #ccc;
-    color: #333;
-    /* 共通のボタン風ルールをアンカーにも適用する */
+.back-btn, a.back-btn, button.back-btn {
+    /* 汎用：a と button 両方に確実に適用する */
+    background-color: #ccc !important;
+    color: #333 !important;
     display: inline-block;
     padding: 10px 14px;
     margin: 12px 0;
@@ -209,9 +209,9 @@ button:hover {
     width: auto;
 }
 
-/* anchor に対するホバーも同じ見た目にする */
-.back-btn:hover {
-    background-color: #aaa;
+/* ホバーも両要素で統一 */
+.back-btn:hover, a.back-btn:hover, button.back-btn:hover {
+    background-color: #aaa !important;
     text-decoration: none;
 }
 
